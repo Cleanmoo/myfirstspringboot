@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hut.suaijun.dao.DepartmentMapper">
+
+  <resultMap type="com.hut.suaijun.bean.Department" id="departmentMap">
+  	<id property="id" column="id"/>
+  	<result property="deptName" column="dept_name"/>
+  </resultMap>
+
+ <select id="getAllDepartment" resultMap="departmentMap">
+     select
+        id,
+        dept_name
+    from
+        department
+ </select>
+
+  
+</mapper>

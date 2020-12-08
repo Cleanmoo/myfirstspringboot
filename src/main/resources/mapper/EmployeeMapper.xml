@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hut.suaijun.dao.EmployeeMapper">
+
+    <resultMap type="com.hut.suaijun.bean.Employee" id="employeeMap">
+        <id property="id" column="id"/>
+        <result property="empName" column="emp_name"/>
+        <result property="empAge" column="emp_age"/>
+    </resultMap>
+
+
+    <select id="getEmployeeByDepId" resultMap="employeeMap">
+        SELECT
+            id,emp_name,emp_age
+        FROM
+            employee
+        WHERE
+            dept_id=#{id};
+    </select>
+
+    <select id="getEmployeeByAll" resultMap="employeeMap">
+        select id,emp_name,emp_age from employee
+    </select>
+
+    <insert id="saveEmployee">
+        insert into employee(id,emp_name,emp_age,dept_id)
+        value (#{id},#{empName},#{empAge},#{deptId})
+    </insert>
+
+    <delete id="delEmpById">
+        delete from employee where id=#{id}
+    </delete>
+
+    <update id="editEmpById">
+        update employee set
+            emp_name=#{empName},
+            emp_age=#{empAge},
+            dept_id=#{deptId}
+        WHERE
+            id=#{id}
+    </update>
+
+
+  
+</mapper>

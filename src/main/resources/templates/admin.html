@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<!-- 根据部门id查询员工信息   表单提交数据-->
+<form action="queryEmpByDeptId">
+    <select name="id">              <!-- 这里面的name="id"不能删，否则拿不到部门id,和实体类中的id名要一致-->
+        <option th:value="none"/>
+
+        <option th:each="dept: ${departments}"
+                th:value="${dept.id}"
+                th:text="${dept.deptName}"
+                th:selected="${dept.id}==${deptId}?true:false"  <!-- 用来绑定查询后显示的部门-->
+        ></option>
+    </select>
+    <input type="submit" value="查询">
+</form>
+
+
+<!-- 跳转到添加页面-->
+<h4>
+    <a href="toAdd">添加</a>
+    <a href="toEdit">编辑</a>
+</h4>
+<br/>
+
+
+<table border="1" cellpadding="0" cellspacing="0" width="500">
+    <thead>
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  name="id" th:each="emp : ${employees}" th:value="${emp.id}">
+        <td th:text="${emp.id}"></td>
+        <td th:text="${emp.empName}"></td>
+        <td th:text="${emp.empAge}"></td>
+        <td align="center">
+            <a th:href="@{'delEmpById'+'?id='+${emp.id}}"><input type="submit" value="删除"></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+
