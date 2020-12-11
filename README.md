@@ -1,2 +1,2 @@
 # myfirstspringboot
-第一次使用spring boot 和模板引擎Thmeleaf实现曾删改查的一个小demo
+第一次使用spring boot 和模板引擎Thymeleaf实现曾删改查的一个小demo
